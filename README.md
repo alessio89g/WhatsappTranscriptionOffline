@@ -1,5 +1,4 @@
 # WhatsappTranscriptionOffline
-# WhatsApp Trascrizione Offline
 
 Questo progetto realizza un bot per WhatsApp in grado di trascrivere automaticamente i messaggi vocali ricevuti, completamente in locale e senza inviare dati a servizi esterni. L'intera elaborazione avviene all'interno di un container Docker in modalità WSL2, sfruttando l'accelerazione GPU Intel integrata (OpenVINO) per garantire velocità e privacy.
 

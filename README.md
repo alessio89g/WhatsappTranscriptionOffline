@@ -72,7 +72,7 @@ Il client whatsapp-web.js utilizza Puppeteer per controllare un’istanza headle
 *   **Privacy nei log:** Lo script è stato configurato per non registrare mai il contenuto della trascrizione. Invece, nei log vengono riportate informazioni utili per il monitoraggio delle prestazioni:
     *   La **durata** del messaggio vocale originale (in secondi).
     *   La **durata del file convertito**.
-    *   Il **tempo totale di elaborazione**, ovvero il tempo intercorso tra l'invio della richiesta al server Python e la ricezione della risposta. Questo dato, insieme alla durata dell'audio, permette di valutare la velocità del sistema (ad esempio, "Tempo di elaborazione: 5.82 secondi per un audio di 12.34 secondi").
+    *   Il **tempo totale di elaborazione**, ovvero il tempo intercorso tra l'invio della richiesta al server Python e la ricezione della risposta. Questo dato, insieme alla durata dell'audio, permette di valutare la velocità del sistema.
 
 ### 2. Server di Trascrizione (Python/FastAPI) – `server/app.py`
 
@@ -99,7 +99,7 @@ Questo semplice script bash viene eseguito come primo comando all'avvio del cont
 1.  **Pulire eventuali file di lock di Chrome.** A volte, se il container non viene spento correttamente, Chrome lascia dei file bloccanti (`Singleton*`) nella directory della sessione, che impedirebbero al client WhatsApp di ripartire. Lo script li elimina prima di avviare supervisord.
 2.  **Avviare supervisord** con il file di configurazione appropriato.
 
-### 5. La persistenza: la cartella `session_data`
+### 5. La cartella `session_data`
 
 Questa cartella è montata come volume nel container (vedi `docker-compose.yml`). Contiene tutti i dati relativi alla sessione autenticata di WhatsApp. Se la cartella viene eliminata, alla successiva esecuzione il bot mostrerà nuovamente il QR code per essere ri-autenticato.
 

@@ -1,0 +1,26 @@
+services:
+  whatsapp-transcription:
+    build: .
+    image: whatsapptranscriptionoffline_image
+    container_name: WhatsAppTranscriptionOffline_Container
+    restart: unless-stopped
+    working_dir: /app
+    privileged: true
+    devices:
+      - /dev/dri:/dev/dri
+    volumes:
+      - ./session_data:/app/session_data
+      - /etc/localtime:/etc/localtime:ro
+      - /usr/lib/wsl:/usr/lib/wsl:ro
+    environment:
+      - GROUPS=${GROUPS:-*}
+      - PATH_AUDIO=${PATH_AUDIO:-.}
+      - TZ=${TZ:-Europe/Rome}
+      - LD_LIBRARY_PATH=/usr/lib/wsl/lib:/opt/intel/openvino/runtime/lib/intel64
+    stdin_open: true
+    tty: true
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "3"

@@ -99,7 +99,7 @@ Questo semplice script bash viene eseguito come primo comando all'avvio del cont
 1.  **Pulire eventuali file di lock di Chrome.** A volte, se il container non viene spento correttamente, Chrome lascia dei file bloccanti (`Singleton*`) nella directory della sessione, che impedirebbero al client WhatsApp di ripartire. Lo script li elimina prima di avviare supervisord.
 2.  **Avviare supervisord** con il file di configurazione appropriato.
 
-### 5. La cartella `session_data`
+### 5. Persistenza sessione – `session_data`
 
 Questa cartella è montata come volume nel container (vedi `docker-compose.yml`). Contiene tutti i dati relativi alla sessione autenticata di WhatsApp. Se la cartella viene eliminata, alla successiva esecuzione il bot mostrerà nuovamente il QR code per essere ri-autenticato.
 

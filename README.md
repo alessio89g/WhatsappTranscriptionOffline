@@ -8,10 +8,18 @@ La quasi totalità del codice è stata generata da DeepSeek; io ho per lo più f
 
 ## GUIDA RAPIDA
  Installare Docker in modalità WSL2 <br>
- Scaricare il file zip del progetto tramite il pulsante Code <br>
+ 
+ Scaricare dalla sezione Releases i file <br>
+Source code.zip <br>
+ e <br>
+openvino_model.bin <br>
  Estrarre il contenuto del file compresso nel suo percorso definitivo <br>
- Assegnare alla cartella contenente i file esratti il nome <br>
+ Assegnare alla cartella contenente i file del progetto il nome <br>
 WhatsappTranscriptionOffline <br>
+ Spostare il file <br>
+openvino_model.bin <br>
+ all'interno della cartella <br>
+openvino_model_lm <br>
 
  Avviare il Terminale nella cartella del progetto ed eseguire i comandi di build ed avvio del container <br>
 docker-compose down <br>

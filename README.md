@@ -58,7 +58,7 @@ Questi componenti comunicano tra loro tramite HTTP su localhost all'interno del 
 Questo script costituisce il cuore dell'interfaccia con WhatsApp. Utilizza la libreria `whatsapp-web.js` per simulare un client WhatsApp Web e rimanere in ascolto dei messaggi.
 Il client whatsapp-web.js utilizza Puppeteer per controllare un’istanza headless di Google Chrome. Questo browser si connette al servizio WhatsApp Web, esegue il rendering della pagina e gestisce la comunicazione in tempo reale con i server di WhatsApp.
 
-*   **Avvio e autenticazione:** Alla prima esecuzione, il client mostra un **codice QR** nel log del container. L'utente deve inquadrarlo con WhatsApp (da `Impostazioni > Dispositivi collegati`) per autenticare il bot. La sessione viene poi salvata nella cartella `session_data`, in modo che alle successive esecuzioni il riavvio sia automatico e senza necessità di ri-scan.
+*   **Avvio e autenticazione:** Alla prima esecuzione, il client mostra un **codice QR** nel log del container. L'utente deve inquadrarlo con WhatsApp per autenticare il bot. La sessione viene poi salvata nella cartella `session_data`, in modo che alle successive esecuzioni il riavvio sia automatico e senza necessità di re-scan.
 *   **Ricezione di un vocale:** Quando arriva un messaggio di tipo audio (vocale), il client:
     1.  Scarica il file audio (in formato `.ogg` o simile).
     2.  **Calcola la durata** del file originale usando `ffprobe` e la registra nei log.

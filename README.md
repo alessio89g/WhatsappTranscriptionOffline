@@ -1,6 +1,6 @@
 # WhatsappTranscriptionOffline
 
-Questo progetto realizza un bot per WhatsApp in grado di trascrivere automaticamente i messaggi vocali ricevuti, completamente in locale e senza inviare dati a servizi esterni. L'intera elaborazione avviene all'interno di un container Docker in modalità WSL2, sfruttando l'accelerazione GPU Intel integrata (OpenVINO) per garantire velocità e privacy.
+Questo progetto realizza un bot per WhatsApp in grado di trascrivere automaticamente i messaggi vocali ricevuti, completamente in locale e senza inviare dati a servizi esterni. L'intera elaborazione avviene all'interno di un container Docker in modalità WSL2, sfruttando l'accelerazione GPU Intel (OpenVINO) per garantire velocità e privacy.
 
 L'idea del progetto è nata sulle basi di questo repository: <br>
 https://github.com/puluceno/WhatsappTranscriptionOffline <br>
@@ -60,12 +60,12 @@ Il client whatsapp-web.js utilizza Puppeteer per controllare un’istanza headle
 
 *   **Avvio e autenticazione:** Alla prima esecuzione, il client mostra un **codice QR** nel log del container. L'utente deve inquadrarlo con WhatsApp per autenticare il bot. La sessione viene poi salvata nella cartella `session_data`, in modo che alle successive esecuzioni il riavvio sia automatico e senza necessità di re-scan.
 *   **Ricezione di un vocale:** Quando arriva un messaggio di tipo audio (vocale), il client:
-    1.  Scarica il file audio (in formato `.ogg` o simile).
+    1.  **Scarica** il file audio (in formato `.ogg` o simile).
     2.  **Calcola la durata** del file originale usando `ffprobe` e la registra nei log.
     3.  **Converte** il file in formato WAV a 16kHz mono, necessario per il modello di trascrizione, utilizzando `ffmpeg`.
     4.  **Calcola la durata** del file WAV convertito (dovrebbe essere molto simile all'originale).
     5.  **Invia il file WAV** al server Python (via HTTP POST) e avvia un timer.
-    6.  Riceve la trascrizione (testo) dal server Python.
+    6.  **Riceve** la trascrizione (testo) dal server Python.
     7.  **Arresta il timer** e calcola il tempo totale impiegato per l'elaborazione.
     8.  **Risponde al messaggio vocale** su WhatsApp con il testo trascritto, preceduto dall'intestazione *"🗣️ Trascrizione Automatica Nota Vocale:"*.
     9.  **Cancella** i file audio temporanei (originale e convertito) dal filesystem.
@@ -114,7 +114,7 @@ Una delle caratteristiche più importanti del progetto è l'attenzione alla priv
 
 ## Riepilogo del flusso di un messaggio vocale
 
-1.  L'utente invia un vocale a un contatto o gruppo monitorato dal bot.
+1.  L'utente riceve un vocale da un contatto o su un gruppo monitorato dal bot.
 2.  `index.js` riceve l'evento, scarica l'audio e salva un file temporaneo (`originale.ogg`).
 3.  `index.js` usa `ffprobe` per misurare la durata dell'originale e la registra nel log.
 4.  `index.js` usa `ffmpeg` per convertire l'audio in `audio.wav` (16kHz, mono).
@@ -130,7 +130,7 @@ Una delle caratteristiche più importanti del progetto è l'attenzione alla priv
 
 Il sistema è ora pronto per ricevere il prossimo messaggio vocale.
 
-Configurazione e variabili d’ambiente
+## Configurazione e variabili d’ambiente
 
 Il comportamento del bot può essere modificato attraverso le variabili d’ambiente definite nel file .env:
 
@@ -139,7 +139,7 @@ Il comportamento del bot può essere modificato attraverso le variabili d’ambi
 - TZ: fuso orario per i timestamp nei log (default Europe/Rome).
 
 
-Componenti esterni utilizzati
+## Componenti
 
 - Node.js: runtime JavaScript.
 - whatsapp-web.js: libreria per interfacciarsi a WhatsApp Web.
@@ -149,5 +149,6 @@ Componenti esterni utilizzati
 - FastAPI + Uvicorn: server web asincrono.
 - Transformers / Optimum: caricamento e ottimizzazione dei modelli.
 - OpenVINO: backend per l’accelerazione su GPU Intel.
+- wav2vec2: modello di trascrizione italiano
 - deepmultilingualpunctuation: modello per la punteggiatura.
 - Supervisord: gestione dei processi all’interno del container.

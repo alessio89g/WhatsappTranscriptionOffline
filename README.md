@@ -49,7 +49,7 @@ Il sistema gira su Ubuntu 22.04.5 LTS (Jammy Jellyfish) ed è composto da tre co
 2.  **Server Python (FastAPI)** – Esegue la trascrizione vera e propria utilizzando modelli di deep learning.
 3.  **Supervisord** – Gestisce l'avvio e il monitoraggio dei due processi (Node e Python), assicurando che vengano sempre eseguiti e riavviati in caso di crash.
 
-Questi componenti comunicano tra loro tramite HTTP su localhost all'interno del container. L'utente finale interagisce solo con il bot WhatsApp, senza mai accorgersi della complessità sottostante.
+Questi componenti comunicano tra loro tramite HTTP su localhost all'interno del container.
 
 ## Componenti in dettaglio
 

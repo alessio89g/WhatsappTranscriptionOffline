@@ -2,35 +2,35 @@
 
 Questo progetto realizza un bot per WhatsApp in grado di trascrivere automaticamente i messaggi vocali ricevuti, completamente in locale e senza inviare dati a servizi esterni. L'intera elaborazione avviene all'interno di un container Docker in modalità WSL2, sfruttando l'accelerazione GPU Intel integrata (OpenVINO) per garantire velocità e privacy.
 
-L'idea del progetto è nata sulle basi di questo repository
-https://github.com/puluceno/WhatsappTranscriptionOffline
+L'idea del progetto è nata sulle basi di questo repository: <br>
+https://github.com/puluceno/WhatsappTranscriptionOffline <br>
 La quasi totalità del codice è stata generata da DeepSeek; io ho per lo più fatto da tester per il debugging ed orchestrato il suo lavoro.
 
 ## GUIDA RAPIDA
- Installare Docker in modalità WSL2
- Scaricare il file zip del progetto tramite il pulsante Code
- Estrarre il contenuto del file compresso nel suo percorso definitivo
- Assegnare alla cartella contenente i file esratti il nome
-WhatsappTranscriptionOffline
+ Installare Docker in modalità WSL2 <br>
+ Scaricare il file zip del progetto tramite il pulsante Code <br>
+ Estrarre il contenuto del file compresso nel suo percorso definitivo <br>
+ Assegnare alla cartella contenente i file esratti il nome <br>
+WhatsappTranscriptionOffline <br>
 
- Avviare il Terminale nella cartella del progetto ed eseguire i comandi di build ed avvio del container
-docker-compose down
-docker-compose up -d --build
+ Avviare il Terminale nella cartella del progetto ed eseguire i comandi di build ed avvio del container <br>
+docker-compose down <br>
+docker-compose up -d --build <br>
 
- Aprire il log del container con il comando
-docker logs -f WhatsAppTranscriptionOffline_Container
- Aprire adesso
-WhatsApp
- sullo smartphone, toccare l'icona dell'
-Overflow menu
- selezionare 
-Dispositivi collegati
- e poi 
-Collega un dispositivo
- Inquadrare quindi il QRcode nel log visibile nella finestra del Terminale.
- Attendere l'output
-WhatsApp client is ready!
- Al completamento dell'operazione, sarà possibile chiudere il Terminale.
+ Aprire il log del container con il comando <br>
+docker logs -f WhatsAppTranscriptionOffline_Container <br>
+ Aprire adesso <br>
+WhatsApp <br>
+ sullo smartphone, toccare l'icona dell' <br>
+Overflow menu <br>
+ selezionare <br>
+Dispositivi collegati <br>
+ e poi <br>
+Collega un dispositivo <br>
+ Inquadrare quindi il QRcode nel log visibile nella finestra del Terminale. <br>
+ Attendere l'output <br>
+WhatsApp client is ready! <br>
+ Al completamento dell'operazione, sarà possibile chiudere il Terminale. <br>
 
 
 ## Panoramica dell'architettura

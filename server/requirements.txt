@@ -6,5 +6,5 @@ transformers==4.45.2
 python-multipart
 torch
 optimum[openvino]==1.23.0
-deepmultilingualpunctuation
+deepmultilingualpunctuation==1.0.1
 pyctcdecode
